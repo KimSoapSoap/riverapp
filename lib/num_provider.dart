@@ -1,8 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+//Num을 다루기 때문에 앞에 Num을 붙였다. User면 User를 붙이는 식으로 이름 통일.
+
 
 //창고 데이터 (책임 : 데이터)
-class Model {
+class NumModel {
   int num = 1;
 }
 
@@ -11,7 +13,7 @@ class Model {
 // 창고가 Model을 extends 해서 사용했다.
 // mixin-with로 사용할지 그냥 class-extends로 사용할지 컨벤션을 정한다.(최신 방식인 mixin 굳)
 //창고 (책임 : 비지니스 로직 관리)
-class NumStore extends Model {
+class NumStore extends NumModel {
 
   //증가 로직
   void increase() {
@@ -31,6 +33,7 @@ class NumStore extends Model {
 //전체적인 모양은 이렇게 창고 관리자가 창고를 관리하는 모양이 되어야 한다.
 
 //창고 관리자
+//싱글톤으로 생성되어 관리된다.
 //ref 쪽은 생성자 내부의 익명 함수이다. 즉 파라미터에 함수를 받는다는 것이다.
 final numProvider = StateProvider<NumStore>((ref) {
   print("StateProvider 창고 생성됨");

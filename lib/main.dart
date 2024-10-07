@@ -36,18 +36,24 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class Bottom extends StatelessWidget {
+class Bottom extends ConsumerWidget {
   const Bottom({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    print('Bottom');
+
+    NumStore store = ref.read(numProvider);
+
     return Center(
       child: Container(
         child: InkWell(
           onTap: () {
             print("증가 클릭됨");
+            //클릭시 num의 상태는 증가되지만 화면에 갱신되지는 않는다.
+            store.increase();
           },
           child: Text(
             "증가",
@@ -71,8 +77,6 @@ class Top extends ConsumerWidget {
 
     NumStore store = ref.read(numProvider); // num_provider.dart의 Provider의 익명함수가 실행됨
     //int num = ref.read(numProvider); // 구조 바뀌기 전 예시 코드
-
-    store.increase();
 
 
     return Center(
