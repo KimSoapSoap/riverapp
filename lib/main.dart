@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverapp/num_provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -69,8 +69,10 @@ class Top extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     print('Top');
 
-    int num = ref.read(numProvider); // num_provider.dart의 Provider의 익명함수가 실행됨
-    int num2 = ref.read(numProvider); // num_provider.dart의 Provider의 익명함수가 실행됨
+    NumStore store = ref.read(numProvider); // num_provider.dart의 Provider의 익명함수가 실행됨
+    //int num = ref.read(numProvider); // 구조 바뀌기 전 예시 코드
+
+    store.increase();
 
 
     return Center(
