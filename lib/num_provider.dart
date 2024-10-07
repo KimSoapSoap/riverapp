@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 //Num을 다루기 때문에 앞에 Num을 붙였다. User면 User를 붙이는 식으로 이름 통일.
 
+//창고 데이터가 클래스인 이유는 다양한 타입을 다루기 위해서다.(다양한 타입을 담을 수 있으므로)
 
 //창고 데이터 (책임 : 데이터)
 class NumModel {
